@@ -9,8 +9,8 @@ int theClosest()
 	std::cin >> numarT;
 	std::cout << "Introduceti temperaturile:\n";
 	std::vector <int> stocare;
-	std::vector <int> par;
-	std::vector <int> impar;
+	std::vector <int> pozitiv;
+	std::vector <int> negativ;
 	int temp = 0;
 	for(int i=0;i< numarT ; i++)
 	{
@@ -27,37 +27,37 @@ int theClosest()
 		else
 		{
 			if (stocare.at(k) > 0)
-				par.push_back(stocare.at(k));
+				pozitiv.push_back(stocare.at(k));
 			else
-				impar.push_back(stocare.at(k));
+				negativ.push_back(stocare.at(k));
 		}
 	}
-	int nrImpar = 0;
-	int nrPar = 0;
-	if(impar.size()>0)
-	 nrImpar = impar.at(0);
-	if(par.size()>0)
-	 nrPar = par.at(0);
-	for(int z=1;z<impar.size();z++)
+	int nrNegativ = 0;
+	int nrPozitiv = 0;
+	if(negativ.size()>0)
+	nrNegativ = negativ.at(0);
+	if(pozitiv.size()>0)
+	nrPozitiv = pozitiv.at(0);
+	for(int z=1;z< negativ.size();z++)
 	{
-		if (nrImpar < impar.at(z))
-			nrImpar = impar.at(z);
+		if (nrNegativ < negativ.at(z))
+			nrNegativ = negativ.at(z);
 	}
-	for (int z = 1; z < par.size(); z++)
+	for (int z = 1; z < pozitiv.size(); z++)
 	{
-		if (nrPar > par.at(z))
-			nrPar = par.at(z);
+		if (nrPozitiv > pozitiv.at(z))
+			nrPozitiv = pozitiv.at(z);
 	}
-	if (impar.size() > 0 && par.size() > 0) {
-		if (nrImpar + nrPar == 0)
-			return nrPar;
-		if (nrImpar + nrPar > 0)
-			return nrImpar;
+	if (negativ.size() > 0 && pozitiv.size() > 0) {
+		if (nrNegativ + nrPozitiv == 0)
+			return nrPozitiv;
+		if (nrNegativ + nrPozitiv > 0)
+			return nrNegativ;
 		else
-			return nrPar;
+			return nrPozitiv;
 	}
-	if (impar.size() == 0)
-		return nrPar;
-	if (par.size() == 0)
-		return nrImpar;
+	if (negativ.size() == 0)
+		return nrPozitiv;
+	if (pozitiv.size() == 0)
+		return nrNegativ;
 }
